@@ -1,0 +1,37 @@
+*{
+    box-sizing: border-box;
+    padding: auto;
+    margin: 0;
+}
+.picture{
+    position: fixed;
+    
+    
+    
+    
+}
+.box{
+    display: flex;
+    justify-content: space-between;
+    
+}
+.boxer{
+    position: absolute;
+    right: 200px;
+}
+.box h1{
+    margin-top: 20px;
+}
+.box p{
+    margin-top: 100px;
+    font-size: large;
+}
+body{
+    padding: 30px;
+    
+}
+.button{
+    margin-left: 200px;
+    margin-top:70px ;
+
+}

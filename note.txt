@@ -1,0 +1,14 @@
+Budget App
+
+First page
+Welcome page and it will have button to go to the next page (Kindly click here to create a budget)
+
+
+Second page 
+it will have either a sidebar or a navbar that will house where the user will put in his/her budget in an input and will show outside
+when the budget shows, the input should dissapear but the amount stays
+
+for the add items table, it will consist of (item, quantity, price, Total price)
+total price will be (quantity * price)
+
+

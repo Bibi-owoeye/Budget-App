@@ -5,14 +5,11 @@
 }
 .picture{
     position: fixed;
-    
-    
-    
-    
 }
 .box{
     display: flex;
     justify-content: space-between;
+
     
 }
 .boxer{
@@ -28,6 +25,7 @@
 }
 body{
     padding: 30px;
+    background-color: rgb(129, 129, 240);
     
 }
 .button{

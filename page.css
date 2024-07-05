@@ -3,6 +3,11 @@
   padding: auto;
   margin: 0;
 }
+ @media screen and(max-width: 475px) {
+  body{
+    background-color: red;
+  }
+ }
 table {
   border-collapse: collapse;
 }

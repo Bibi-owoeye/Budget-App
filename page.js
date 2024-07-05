@@ -6,22 +6,33 @@ let realBudget = 0
 
 let activeEditingData = {}
 
+const loading = () => {
+    if (localStorage.bibi) {
 
+
+
+    }
+}
 const addBudget = () => {
+    budget.innerHTML = `NGN ${document.getElementById('inputBudget').value}`
     if (!inputBudget.value) {
-        noBudgetYet.style.display='block'
+        document.getElementById('showMe').innerHTML = ''
+        noBudgetYet.style.display = 'block'
     } else {
         mainBudget = document.getElementById('inputBudget').value
         showBudget.innerHTML = `NGN ${mainBudget}`
         inputBudget.value = ""
     }
-    setTimeout(()=>{
+    setTimeout(() => {
         noBudgetYet.style.display = 'none'
     }, 3000)
 }
 const submitItem = () => {
+    // let text = document.getElementById("moreThanBudget").innerHTML;
+    // document.getElementById("moreThanBudget").innerHTML =
+    //     text.replace(/amount/i, "relationship");
     if (!inputOne.value || !inputTwo.value || !inputThree.value) {
-        noItemYet.style.display='block'
+        noItemYet.style.display = 'block'
     } else {
 
         allInputs = {
@@ -32,15 +43,21 @@ const submitItem = () => {
         }
         // console.log(mainBudget)
         // console.log(allInputs)
-        
+
         allItems.push(allInputs)
+        let stringing = JSON.stringify(allItems)
+        localStorage.setItem('bibi', stringing)
         addorRemove()
     }
-    setTimeout(()=>{
+    setTimeout(() => {
         noItemYet.style.display = 'none'
     }, 3000)
 }
-const addorRemove = ()=> {
+const addorRemove = () => {
+    if (localStorage.bibi) {
+        allItems = JSON.parse(localStorage.getItem('bibi'));
+
+    }
     if (allInputs.inputFour > mainBudget) {
         moreThanBudget.style.display = 'block'
     }
@@ -49,21 +66,22 @@ const addorRemove = ()=> {
         mainBudget = mainBudget - allInputs.inputFour
         showBudget.innerHTML = "NGN " + mainBudget
         moreThanBudget.style.display = 'none'
-        
-        
+
+
         displayItems()
     }
     else {
         moreThanBudget.style.display = 'none'
-        deleteall.style.display= 'block'
+
         displayItems()
     }
-    setTimeout(()=>{
+    setTimeout(() => {
         moreThanBudget.style.display = 'none'
     }, 3000)
 
 }
 const displayItems = () => {
+
     let tableHTML = '<table class="text-center">';
     tableHTML += '<tr>';
     tableHTML += `<th > S/N </th>`
@@ -71,6 +89,7 @@ const displayItems = () => {
     tableHTML += '<th>' + 'Price' + '</th>'
     tableHTML += '<th>' + 'Quantity' + '</th>'
     tableHTML += '<th>' + 'Total Price' + '</th>'
+    tableHTML += '<th>' + 'Action' + '</th>'
     tableHTML += '</tr>';
 
     allItems.map((allInputs, index) => {
@@ -121,10 +140,11 @@ const deleteTodo = (i) => {
 
 
 const edit = (i) => {
-    newIndex = i
+
     allItems.forEach((data, index) => {
         if (index === i) {
             activeEditingData = data
+
         };
     })
 }
@@ -140,8 +160,8 @@ const editAnyItem = () => {
             inputFour: (parseFloat(inputNew2.value * inputNew3.value))
         }
 
-        mainBudget = (mainBudget + activeEditingData.inputFour) - newModal.inputFour       
-        
+        mainBudget = (mainBudget + activeEditingData.inputFour) - newModal.inputFour
+
         allItems.splice(newIndex, 1, newModal)
         // console.log('yes');
         document.getElementById('inputNew1').value = ''
@@ -154,30 +174,30 @@ const editAnyItem = () => {
 }
 
 
-const deleteAll = ()=>{
-    
+const deleteAll = () => {
+
     allItems.forEach((data, index) => {
         // console.log(allItems.length);
-        if((allItems.length-1) === index){
+        if ((allItems.length - 1) === index) {
             mainBudget = (mainBudget + data.inputFour)
             console.log("last data")
 
             showBudget.innerHTML = "NGN " + mainBudget
-            
+
             allItems = []
             newIndex = 0
             allInputs = {}
             activeEditingData = {}
 
             displayItems()
-            
+
         }
-        else{
+        else {
             mainBudget = (mainBudget + data.inputFour)
         }
     })
 
-    
-    
+
+
 
 }

@@ -6,9 +6,7 @@
 table {
   border-collapse: collapse;
 }
-th,
-td,
-tr {
+th,td,tr {
   border: 2px solid blue;
   padding: 10px;
   color: white;
@@ -19,12 +17,15 @@ tr {
  body{
     background-color:rgb(91, 180, 239);
  }
+ .head{
+    background-color: whitesmoke;
+ }
 #showMe {
   text-align: -webkit-center !important;
   position: absolute;
   left: 600px;
   top: 150px;
-  z-index: 100;
+  
   
 }
 .coolinput {
